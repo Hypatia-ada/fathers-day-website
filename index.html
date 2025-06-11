@@ -63,8 +63,8 @@
     }
 
     button {
-      display: block;
-      margin: 30px auto 0;
+      display: inline-block;
+      margin: 20px 10px 0;
       padding: 10px 20px;
       font-size: 1.1rem;
       background: #ffb6c1;
@@ -91,6 +91,15 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    .extra-space {
+      height: 800px;
+      background: transparent;
+    }
+
+    .button-container {
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -103,7 +112,9 @@
       <p>
         You're cooler than Claudia’s earrings and wiser than Google. This site is a digital hug from your child (me!), handmade with style and sparkle. 💌
       </p>
-      <button onclick="showNext(1)">Next ✨</button>
+      <div class="button-container">
+        <button onclick="showNext(1)">Next ✨</button>
+      </div>
     </div>
 
     <div class="section">
@@ -111,7 +122,10 @@
       <p>
         Like Claudia, I made this with my creative brain and my full heart. Each page is a story, just like the ones we laugh about together. This is more than a website – it’s a thank-you note.
       </p>
-      <button onclick="showNext(2)">Next 💫</button>
+      <div class="button-container">
+        <button onclick="showPrev(0)">Back ⬅️</button>
+        <button onclick="showNext(2)">Next 💫</button>
+      </div>
     </div>
 
     <div class="section">
@@ -123,7 +137,10 @@
         <li>Ultimate Coding Hero 👨‍💻</li>
         <li>World’s Funniest Advice Giver 😆</li>
       </ul>
-      <button onclick="showNext(3)">Next 🎁</button>
+      <div class="button-container">
+        <button onclick="showPrev(1)">Back ⬅️</button>
+        <button onclick="showNext(3)">Next 🎁</button>
+      </div>
     </div>
 
     <div class="section">
@@ -131,7 +148,10 @@
       <p>
         🎟️ Redeemable for: One movie night + snacks + no interruptions + me! Just say the word, and it’s yours. Valid forever 💕
       </p>
-      <button onclick="showNext(4)">Final Page 🌈</button>
+      <div class="button-container">
+        <button onclick="showPrev(2)">Back ⬅️</button>
+        <button onclick="showNext(4)">Final Page 🌈</button>
+      </div>
     </div>
 
     <div class="section">
@@ -139,12 +159,17 @@
       <p>
         You taught me how to be smart, kind, curious, and bold. So here’s my Claudia-level creation — just for you. I love you more than all the stickers in the world 💖
       </p>
+      <div class="button-container">
+        <button onclick="showPrev(3)">Back ⬅️</button>
+      </div>
     </div>
 
     <footer>
       Hand-coded with love | Hosted with GitHub Pages | No tracking, just sparkle ✨
     </footer>
   </div>
+
+  <div class="extra-space"></div>
 
   <script>
     function showNext(index) {
@@ -154,7 +179,16 @@
         sections[index].classList.add('active');
       }
     }
+
+    function showPrev(index) {
+      const sections = document.querySelectorAll('.section');
+      if (index >= 0) {
+        sections.forEach(sec => sec.classList.remove('active'));
+        sections[index].classList.add('active');
+      }
+    }
   </script>
 
 </body>
 </html>
+
